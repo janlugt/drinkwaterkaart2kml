@@ -17,6 +17,7 @@ kml = simplekml.Kml(name = 'Drinking water locations')
 for loc in locations:
   name = loc['desc'].split('</a>')[-1].strip()
   pnt = kml.newpoint(name='<![CDATA[%s]]>' % name)
-  pnt.coords = [(loc['lng'], loc['lat'])]
+  coords = loc['address'].split(',')
+  pnt.coords = [(coords[1].strip(), coords[0].strip())]
 
 kml.save('drinkwaterkaart.kml')
