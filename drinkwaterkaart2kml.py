@@ -11,6 +11,7 @@ locations_line = locations_line.replace('var wpgmaps_localize_marker_data = ', '
 # Remove semicolon
 locations_line = locations_line[:-1]
 locations = json.loads(locations_line).values()[0].values()
+locations.sort(key=lambda x: x['desc'])
 
 kml = simplekml.Kml(name = 'Drinking water locations')
 
