@@ -16,7 +16,7 @@ locations.sort(key=lambda x: x['desc'])
 kml = simplekml.Kml(name = 'Drinking water locations')
 
 for loc in locations:
-  name = loc['desc'].split('</a>')[-1].strip()
+  name = loc['desc'].split('</a>')[-1].replace('- Drinkwaterkaart.nl -', '').strip()
   pnt = kml.newpoint(name='<![CDATA[%s]]>' % name)
   coords = loc['address'].split(',')
   pnt.coords = [(coords[1].strip(), coords[0].strip())]
